@@ -22,9 +22,15 @@ function cadastrar() {
 
     };
 
-    tabCadast.push(aluno);
-    localStorage.setItem("tabCadast", JSON.stringify(tabCadast));
-    alert("Cadastrado realizado com sucesso!");
+    let containsId = tabCadast.some(elem => aluno.id === elem.id);
+
+    if (!containsId) {
+        tabCadast.push(aluno);
+        localStorage.setItem("tabCadast", JSON.stringify(tabCadast));
+        alert("Cadastrado realizado com sucesso!");
+    } else {
+        alert("Já existe um aluno cadastrado com esse R.A(número de matricula)!");
+    }
 }
 
 function listar() {
